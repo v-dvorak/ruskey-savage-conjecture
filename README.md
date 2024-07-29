@@ -6,7 +6,7 @@
 
 ## How to run
 
-1) Install SWI-Prolog 9.x
+1) Install GHCI 9.4.x
 2) Clone this repository
 3) Run `ghci`
 4) Load `Main.hs` - `:l Main.hs`
