@@ -1,3 +1,6 @@
+.vscode
+sandbox.*
+
 dist
 dist-*
 cabal-dev
