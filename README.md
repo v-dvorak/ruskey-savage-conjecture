@@ -1,6 +1,6 @@
 # Ruskey-Savage Conjecture
 
-**Ruskey-Savage Conjecture** (F. Ruskey, C. Savage, 1993): a hypercube of dimension *n* is a graph whose vertices are all *n*-bit strings, with edges leading between vertices differing in a single bit. Under the still open hypothesis, every pairing (set of non-intersecting edges) in this graph can be extended to a Hamiltonian cycle (each vertex is traversed exactly once). Write a program to test the hypothesis for small values of *n*.
+**Ruskey-Savage Conjecture** (F. Ruskey, C. Savage, 1993): a hypercube of dimension *n* is a graph whose vertices are all *n*-bit strings, with edges leading between vertices differing in a single bit. Under the still open hypothesis, every pairing (set of non-intersecting edges) in this graph can be extended to a Hamiltonian cycle (each vertex is traversed exactly once). This program tests the hypothesis for small values of *n*.
 
 [[Source](https://ksvi.mff.cuni.cz/~dvorak/vyuka/14/NPRG005x01/programy.html), [Open Problem Garden](http://www.openproblemgarden.org/op/matchings_extends_to_hamilton_cycles_in_hypercubes)]
 
@@ -18,9 +18,9 @@
 
 ### Creating Hypercube
 
-Creating a Hypercube of dimension *n* is easy, first all vertices are created by generating all possible permutations of `0` and `1` (`generateHypercubeVertices`). Then, using list comprehension, edges are created by looping over every permutation of two vertices and checking if these vertices can be neighbors (`generateHypercubeEdges`).
+Creating an *n*-dimensional hypercube is straightforward. First, we generate all possible permutations of lenght *n* of `0`s and `1`s to create the vertices (generateHypercubeVertices). Next, we use list comprehension to create the edges by iterating over every pair of vertices and checking if they can be neighbors (`generateHypercubeEdges`).
 
-Also, a function to generate possible neighbors of a given vertex is provided - `generateHypercubeNeighbors`.
+Additionally, a function to generate the possible neighbors of a given vertex is provided (`generateHypercubeNeighbors`).
 
 ### Maximal vs maximum matching
 
@@ -29,7 +29,7 @@ Also, a function to generate possible neighbors of a given vertex is provided - 
 
 > A **maximum matching** (also known as maximum-cardinality matching) is a matching that contains the largest possible number of edges. [[Source](https://en.wikipedia.org/wiki/Matching_(graph_theory))]
 
-Both of these matchings are maximal but only the one on left is maximum:
+Both of these matchings are maximal but only the one on the left is maximum:
 
 ![](max_example.png)
 
@@ -37,9 +37,9 @@ In this work, we only deal with **maximal matchings**.
 
 ### Finding all maximal matchings
 
-The conjecture states that *"every pairing/matching can be extended to a Hamiltonian cycle"*, from course of Combinatorics and Graph Theory 1 we know that *"every matching can be extended to maximal matching"*. So, in a finite Hypercube, for every matching $M$ there exists maximal matching $K$, such that $M \subseteq K$.
+The conjecture posits that *"every pairing/matching can be extended to a Hamiltonian cycle"*. From Combinatorics and Graph Theory I course, we know that *"every matching can be extended to a maximal matching"*. Therefore, in a finite hypercube, for every matching $M$, there exists a maximal matching $K$ such that $M \subseteq K$.
 
-If we find a Hamiltonian cycle $H$ for maximal matching $K$, $K \subseteq H$, we also find a Hamiltonian cycle for every $M \subseteq K$ $\impliedby M \subseteq K \subseteq H$. This allows us to skip all non-maximal matchings and focus only on maximal ones.
+If we find a Hamiltonian cycle $H$ for a maximal matching $K$ (where $K \subseteq H$), we consequently find a Hamiltonian cycle for every $M \subseteq K$ (since $M \subseteq K \subseteq H$). This approach allows us to skip non-maximal matchings and focus solely on maximal ones.
 
 #### Algorithm
 
