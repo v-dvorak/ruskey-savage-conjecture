@@ -18,13 +18,13 @@
 
 ### Creating Hypercube
 
-Creating an *n*-dimensional hypercube is straightforward. First, we generate all possible permutations of lenght *n* of `0`s and `1`s to create the vertices (generateHypercubeVertices). Next, we use list comprehension to create the edges by iterating over every pair of vertices and checking if they can be neighbors (`generateHypercubeEdges`).
+Creating an *n*-dimensional hypercube is straightforward. First, we generate all possible permutations of lenght *n* of `0`s and `1`s to create the vertices (`generateHypercubeVertices`). Next, we use list comprehension to create the edges by iterating over every pair of vertices and checking if they can be neighbors (`generateHypercubeEdges`).
 
 Additionally, a function to generate the possible neighbors of a given vertex is provided (`generateHypercubeNeighbors`).
 
 ### Maximal vs maximum matching
 
-> A **maximal matching** is a matching $M$ of a graph $G$ that is not a subset of any other matching. ($\implies$ no additional edges from $G$ can be added to $M$ without violation the definition of maximal matching). [[Source](https://en.wikipedia.org/wiki/Matching_(graph_theory))]
+> A **maximal matching** is a matching $M$ of a graph $G$ that is not a subset of any other matching. ($\implies$ no additional edges from $G$ can be added to $M$ without violating the definition of maximal matching). [[Source](https://en.wikipedia.org/wiki/Matching_(graph_theory))]
 
 
 > A **maximum matching** (also known as maximum-cardinality matching) is a matching that contains the largest possible number of edges. [[Source](https://en.wikipedia.org/wiki/Matching_(graph_theory))]
