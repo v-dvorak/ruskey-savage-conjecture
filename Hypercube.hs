@@ -1,4 +1,3 @@
-
 module Hypercube (
     Hypercube(..),
     Edge(..),
@@ -7,6 +6,8 @@ module Hypercube (
     areAdjacent,
     generateHypercubeNeighbors
 ) where
+
+import Control.Monad (replicateM)
 
 -- Define a data type for Hypercube and other data types
 data Hypercube = Hypercube { dimension :: Int, vertices :: [Vertex], edges :: [Edge] }
@@ -45,11 +46,10 @@ generateHypercubeNeighbors (Vertex v) =
         in before ++ [1 - currentBit] ++ after
 
 generateHypercubeVertices :: Int -> [Vertex]
-generateHypercubeVertices n | n < 1  = [Vertex []]
-generateHypercubeVertices n = [Vertex (0 : unVertex vertex) | vertex <- nextVertices] ++
-                              [Vertex (1 : unVertex vertex) | vertex <- nextVertices]
-    where
-        nextVertices = generateHypercubeVertices (n - 1)
+generateHypercubeVertices n
+    | n < 0     = undefined
+    | n == 0    = []
+    | otherwise = map Vertex (replicateM n [0, 1])
 
 -- Generate all edges of the hypercube
 generateHypercubeEdges :: [Vertex] -> [Edge]
